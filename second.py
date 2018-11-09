@@ -10,24 +10,18 @@ import datetime
 classes = ['DR','FT','LP']
 
 classifier1 = Sequential()
-
 classifier1.add(Conv2D(8, (3, 3), input_shape = (128, 128, 3), activation = 'relu'))
-
 classifier1.add(MaxPooling2D(pool_size = (2, 2)))
 classifier1.add(Conv2D(16, (3, 3), activation = 'relu'))
 classifier1.add(MaxPooling2D(pool_size = (2, 2)))
-
 classifier1.add(Conv2D(64, (3, 3), activation = 'relu'))
 classifier1.add(MaxPooling2D(pool_size = (2, 2)))
 classifier1.add(Flatten())
 classifier1.add(Dense(units = 128, activation = 'relu'))
 classifier1.add(Dense(units = 3, activation = 'softmax'))
-
-
-
 classifier1.compile(optimizer = 'rmsprop', loss = 'categorical_crossentropy', metrics = ['accuracy'])
-from keras.preprocessing.image import ImageDataGenerator
 
+from keras.preprocessing.image import ImageDataGenerator
 train_datagen = ImageDataGenerator(rescale = 1./255,
 horizontal_flip = True)
 
@@ -52,11 +46,7 @@ class_mode = 'categorical')
 
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-
-
 a = datetime.datetime.now().replace(microsecond=0)
-
-
 
 history = classifier1.fit_generator(training_set,
 steps_per_epoch = 100,
@@ -70,21 +60,15 @@ classifier2.add(Conv2D(8, (3, 3), input_shape = (128, 128, 3), activation = 'rel
 classifier2.add(MaxPooling2D(pool_size = (2, 2)))
 classifier2.add(Conv2D(16, (3, 3), activation = 'relu'))
 classifier2.add(MaxPooling2D(pool_size = (2, 2)))
-
 classifier2.add(Conv2D(64, (3, 3), activation = 'relu'))
 classifier2.add(MaxPooling2D(pool_size = (2, 2)))
 classifier2.add(Flatten())
 classifier2.add(Dense(units = 128, activation = 'relu'))
 classifier2.add(Dense(units = 3, activation = 'softmax'))
-
 classifier2.load_weights('./models/model_100_5_arun.h5')
-
-
-
-
 classifier2.compile(optimizer = 'rmsprop', loss = 'categorical_crossentropy', metrics = ['accuracy'])
-from keras.preprocessing.image import ImageDataGenerator
 
+from keras.preprocessing.image import ImageDataGenerator
 train_datagen = ImageDataGenerator(rescale = 1./255,
 horizontal_flip = True)
 
@@ -110,16 +94,10 @@ class_mode = 'categorical')
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
-
 a = datetime.datetime.now().replace(microsecond=0)
-
-
-
 history = classifier2.fit_generator(training_set,
 steps_per_epoch = 100,
 epochs = 2,
 validation_data = validation_set,
 validation_steps = 100)
 classifier2.save_weights('./models/model_100_5_tc2.h5')
-
-
