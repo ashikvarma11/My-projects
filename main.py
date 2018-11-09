@@ -22,6 +22,7 @@ classifier.add(Dense(units = 3, activation = 'softmax'))
 classifier.compile(optimizer = 'rmsprop', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 
 from keras.preprocessing.image import ImageDataGenerator
+
 train_datagen = ImageDataGenerator(rescale = 1./255,
 horizontal_flip = True)
 valid_datagen = ImageDataGenerator(rescale = 1./255,
