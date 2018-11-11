@@ -21,7 +21,7 @@ classifier1.add(MaxPooling2D(pool_size = (2, 2)))
 classifier1.add(Flatten())
 classifier1.add(Dense(units = 128, activation = 'relu'))
 classifier1.add(Dense(units = 3, activation = 'softmax'))
-classifier1.load_weights('./models/model_100_5_tc1.h5')
+classifier1.load_weights('../models/rec2/rec2_tc1.h5')
 
 classifier2 = Sequential()
 input2 = Input(shape=(128, 128, 3))
@@ -34,7 +34,7 @@ classifier2.add(MaxPooling2D(pool_size = (2, 2)))
 classifier2.add(Flatten())
 classifier2.add(Dense(units = 128, activation = 'relu'))
 classifier2.add(Dense(units = 3, activation = 'softmax'))
-classifier2.load_weights('./models/model_100_5_tc2.h5')
+classifier2.load_weights('../models/rec2/rec2_tc2.h5')
 
 # Consolidated model
 consolidated_model = Model(
@@ -42,4 +42,4 @@ consolidated_model = Model(
     outputs=[classifier2.output]
 )
 consolidated_model.compile(optimizer = 'rmsprop', loss = 'categorical_crossentropy', metrics = ['accuracy'])
-consolidated_model.save('./models/rec1_model.h5')
+consolidated_model.save('../models/rec2/rec2_model.h5')
