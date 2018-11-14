@@ -32,14 +32,14 @@ test_datagen = ImageDataGenerator(rescale = 1./255)
 
 training_set = train_datagen.flow_from_directory('../TC2/Arun/train/',
 target_size = (128, 128),
-batch_size = 5,
+batch_size = 10,
 shuffle = True,
 color_mode="rgb",
 class_mode = 'categorical')
 
 validation_set = valid_datagen.flow_from_directory('../TC2/Arun/validation/',
 target_size = (128, 128),
-batch_size = 5,
+batch_size = 10,
 shuffle = True,
 color_mode="rgb",
 class_mode = 'categorical')
@@ -79,14 +79,14 @@ test_datagen = ImageDataGenerator(rescale = 1./255)
 
 training_set = train_datagen.flow_from_directory('../TC2/Ashik/train/',
 target_size = (128, 128),
-batch_size = 5,
+batch_size = 10,
 shuffle = True,
 color_mode="rgb",
 class_mode = 'categorical')
 
 validation_set = valid_datagen.flow_from_directory('../TC2/Ashik/validation/',
 target_size = (128, 128),
-batch_size = 5,
+batch_size = 10,
 shuffle = True,
 color_mode="rgb",
 class_mode = 'categorical')
@@ -101,3 +101,5 @@ epochs = 2,
 validation_data = validation_set,
 validation_steps = 100)
 classifier2.save_weights('../models/rec1/rec1_tc2.h5')
+b = datetime.datetime.now().replace(microsecond=0)
+print("time for testcase2: " + str(b-a) )
